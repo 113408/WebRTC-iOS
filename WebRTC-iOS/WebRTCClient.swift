@@ -16,7 +16,6 @@ class WebRTCClient: NSObject {
     
     private let factory: RTCPeerConnectionFactory
     var peerConnection: RTCPeerConnection!
-    var renderer : RTCVideoRenderer?
     weak var delegate: WebRTCClientDelegate?
     private let mediaConstrains = [kRTCMediaConstraintsOfferToReceiveAudio: kRTCMediaConstraintsValueTrue,
                                    kRTCMediaConstraintsOfferToReceiveVideo: kRTCMediaConstraintsValueTrue]
@@ -66,7 +65,6 @@ class WebRTCClient: NSObject {
     }
     
     func startCaptureLocalVideo(renderer: RTCVideoRenderer) {
-        self.renderer = renderer
         guard let capturer = self.videoCapturer as? RTCCameraVideoCapturer else {
             return
         }
@@ -89,6 +87,7 @@ class WebRTCClient: NSObject {
         capturer.startCapture(with: frontCamera,
                               format: format,
                               fps: Int(fps.maxFrameRate))
+        self.localVideoTrack?.add(renderer)
     }
     
     private func createMediaSenders() {
@@ -97,7 +96,6 @@ class WebRTCClient: NSObject {
         self.peerConnection.add(audioTrack, streamIds: ["stream0"])
         self.peerConnection.add(videoTrack, streamIds: ["stream0"])
         self.localVideoTrack = videoTrack
-        self.localVideoTrack?.add(renderer!)
     }
     
     private func createAudioTrack() -> RTCAudioTrack {
@@ -124,6 +122,7 @@ class WebRTCClient: NSObject {
     func close(){
         peerConnection.close()
         peerConnection = nil
+        (videoCapturer as? RTCCameraVideoCapturer)?.stopCapture()
     }
 }
 

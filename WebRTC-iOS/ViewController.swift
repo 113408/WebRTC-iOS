@@ -22,7 +22,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.webRTCClient.delegate = self
         self.signalClient.delegate = self
-        initChatComponents()
     }
     
     func initChatComponents(){
@@ -67,6 +66,7 @@ class ViewController: UIViewController {
                 return
             }
             self.webRTCClient.initPeerConnection()
+            self.initChatComponents()
         }
         
     }
