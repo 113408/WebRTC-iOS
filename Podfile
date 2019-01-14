@@ -7,4 +7,6 @@ target 'WebRTC-iOS' do
 
   # Pods for WebRTC-iOS
   pod 'GoogleWebRTC'
+  pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
 end
