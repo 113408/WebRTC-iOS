@@ -1,0 +1,16 @@
+PODS:
+  - GoogleWebRTC (1.1.25544)
+
+DEPENDENCIES:
+  - GoogleWebRTC
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - GoogleWebRTC
+
+SPEC CHECKSUMS:
+  GoogleWebRTC: b73841295d587468f368d146144753b138ed8014
+
+PODFILE CHECKSUM: cdf0a81fba9c03550df7da42c1cd3c41f1f817a0
+
+COCOAPODS: 1.5.3
