@@ -120,6 +120,11 @@ class WebRTCClient: NSObject {
         let videoTrack = self.factory.videoTrack(with: videoSource, trackId: "video0")
         return videoTrack
     }
+    
+    func close(){
+        peerConnection.close()
+        peerConnection = nil
+    }
 }
 
 extension WebRTCClient: RTCPeerConnectionDelegate {

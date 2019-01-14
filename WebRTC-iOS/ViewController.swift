@@ -82,6 +82,10 @@ class ViewController: UIViewController {
         startButton.isEnabled = true
         callButton.isEnabled = false
         hangupButton.isEnabled = false
+        
+        webRTCClient.close()
+        signalClient.close()
+        
     }
     
     func embedView(_ view: UIView, into containerView: UIView) {

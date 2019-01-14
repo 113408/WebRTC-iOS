@@ -134,4 +134,11 @@ class SignalClient {
             }
         }
     }
+    
+    func close() {
+        delegate = nil
+        docRef?.remove()
+        localIceCandidates = [[String:String]]()
+        remoteIceCandidates = [[String:String]]()
+    }
 }
