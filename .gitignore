@@ -33,3 +33,4 @@ Carthage/Build
 
 #IDE files
 .idea/
+WebRTC-iOS/GoogleService-Info.plist
